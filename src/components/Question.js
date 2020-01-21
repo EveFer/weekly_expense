@@ -1,7 +1,8 @@
 import React, {Fragment, useState} from 'react';
-import Error from './Error'
+import PropTypes from 'prop-types';
+import Error from './Error';
 
-const Question = ({setPresupuesto, setRestante}) => {
+const Question = ({setPresupuesto, setRestante, setShowQuestion}) => {
     // definir el state
     const [cantidad, setCantidad] = useState(0)
     const [error, setError] = useState(false)
@@ -17,6 +18,7 @@ const Question = ({setPresupuesto, setRestante}) => {
         setError(false)
         setPresupuesto(cantidad)
         setRestante(cantidad)
+        setShowQuestion(false)
     }
 
     return (
@@ -41,5 +43,11 @@ const Question = ({setPresupuesto, setRestante}) => {
         </Fragment>
     );
 };
+
+Question.propType = {
+    setPresupuesto: PropTypes.func.isRequired, 
+    setRestante: PropTypes.func.isRequired, 
+    setShowQuestion: PropTypes.func.isRequired
+}
 
 export default Question;
